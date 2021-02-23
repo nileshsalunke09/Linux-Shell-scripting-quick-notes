@@ -282,6 +282,45 @@ Syntax:
 Use of tr utility: To translate range of characters into other range of characters.
 
 
+**Data manipulation using awk utility**
+
+General Syntax of awk utility:
+
+	awk pattern action {file-name}
+    
+
+**sed utility - Editing file without using editor**
+
+Syntax:
+
+ 	sed {expression} {file}
+    
+    
+Use of sed utility: sed is used to edit (text transformation) on given stream i.e a file or may be input from a pipeline.
+
+
+**Removing duplicate lines using uniq utility**
+
+General Syntax of uniq utility:
+
+	uniq {file-name}
+    
+
+
+**Finding matching pattern using grep utility**
+
+Syntax:
+
+	grep word-to-find {file-name}
+    
+    
+Grep will locate all the words mentioned in the syntax
+
+
+
+
+
+
 
 
 
