@@ -317,10 +317,133 @@ Syntax:
 Grep will locate all the words mentioned in the syntax
 
 
+**Getting started with ex**
+
+You can start the ex editor by typeing ex at shell prompt:
+
+Syntax:
+
+	ex {file-name}
+    
+Example:
+
+	$ ex demofile
 
 
+**Printing text on-screen**
+
+First open the our demofile as follows:
+
+	ex demofile
+    
+
+Entering Ex mode. Type "visual" to go to Normal mode.
+
+Now type 'p' in front of : as follow and press enter
+    
+    
+- NOTE By default p command will print current line, in our case its the last line of above text file.
+
+- Now if you want to print 1st line to next 5 line (i.e. 1 to 5 lines) then give command
+	
+    :1,5 p
+    
+NOTE Here 1,5 is the address. if single number is used (e.g. 5 p) it indicate line number and if two numbers are separated by comma its range of line.
+
+- Printing particular line
+
+To print 2nd line from our file give command
+	
+    :2 p
+
+- Printing entire file on-screen
+
+	`:1,$ p`
+    
+NOTE Here 1 is 1st line and $ is the special character of ex which mean last-line character. So 1,$ means print from 1st line to last-line character (i.e. end of file). Here p stands print.
+
+- Printing line number with our text
+
+	`:set number`
+	`:1,3 p`
 
 
+NOTE This command prints number next to each line. If you don't want number you can turn off
+numbers by issuing following command
+
+	:set nonumber
+	:1,3 p
+    
+**Deleting lines**
+
+Give command
+	
+    :1, d
+    
+
+NOTE Here 1 is 1st line and d command indicates deletes (Which deletes the 1st line).
+
+You can even delete range of line by giving command as
+
+	:1,5 d
+
+**Copying lines**
+
+Give command as follows
+	
+    :1,4 co $
+	:1,$ p
+    
+    
+NOTE Here 1,4 means copy 1 to 4 lines; co command stands for copy; $ is end of file. So it mean copy first four line to end of file. You can delete this line as follows
+	
+    :18,21 d    
 
 
+**Searching the words**
 
+(a) Give following command
+	
+    :/linux/ p
+    
+Note In ex you can specify address (line) using number for various operation. This is useful if you know the line number in advance, but if you don't know line number, then you can use contextual address to print line on-screen. In above example /linux/ is contextual address which is constructed by surrounding a regular expression with two slashes. And p is print command of ex.
+
+**Quitting the ex**
+
+Give command
+	
+    :q
+
+
+**Find and Replace (Substituting regular expression)**
+
+Give command as follows
+	
+    :8 p
+    
+  :8 s/lerarns/learn/ 
+	
+    :p
+
+![Screen Shot 2021-03-02 at 9.16.33 AM.png]({{site.baseurl}}/Screen Shot 2021-03-02 at 9.16.33 AM.png)
+
+
+Note Using above command, you are substituting the word "currently" to "now"
+
+Above command can be explained as follows:
+
+- 3 - go to line 3 
+- s - substitute
+- currently - Target pattern
+- now - If target found replace with now.
+
+
+![Screen Shot 2021-03-02 at 9.20.09 AM.png]({{site.baseurl}}/Screen Shot 2021-03-02 at 9.20.09 AM.png)
+
+
+Using above command, you are substituting all lines i.e. s command will find all of the address line for the pattern "Linux" and if pattern "Linux" found substitute pattern "Unix".    
+
+- :1,$ - Substitute for all line
+- s - substitute
+- /Linux - target pattern
+- Unix - Substitute to the target.
